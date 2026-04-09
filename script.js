@@ -1,76 +1,79 @@
-// ✅ Welcome
-function welcome() {
-    alert("🎓 Application Started!");
-}
+document.addEventListener("DOMContentLoaded", () => {
 
-// ✅ Menu Toggle (ONLY MOBILE)
-function toggleMenu() {
-    if (window.innerWidth <= 768) {
-        document.getElementById("navMenu").classList.toggle("show");
+    const navMenu = document.getElementById("navMenu");
+    const menuToggle = document.querySelector(".menu-toggle");
+    const topBtn = document.getElementById("topBtn");
+
+    // ✅ Welcome
+    window.welcome = function () {
+        alert("🎓 Application Started!");
+    };
+
+    // ✅ Toggle Menu (Mobile)
+    menuToggle.addEventListener("click", () => {
+        navMenu.classList.toggle("show");
+    });
+
+    // ✅ Dark Mode (with save)
+    window.toggleTheme = function () {
+        document.body.classList.toggle("dark");
+
+        // Save preference
+        if (document.body.classList.contains("dark")) {
+            localStorage.setItem("theme", "dark");
+        } else {
+            localStorage.setItem("theme", "light");
+        }
+    };
+
+    // Load saved theme
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
     }
-}
 
-// ✅ Dark Mode
-function toggleTheme() {
-    document.body.classList.toggle("dark");
-}
+    // ✅ Scroll Event
+    window.addEventListener("scroll", () => {
 
-// ✅ Form Validation
-function validateForm() {
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
+        // Show scroll button
+        if (window.scrollY > 200) {
+            topBtn.style.display = "block";
+        } else {
+            topBtn.style.display = "none";
+        }
 
-    if (!name || !email) {
-        alert("❌ Please fill all fields");
-        return false;
-    }
+        reveal();
+    });
 
-    alert("✅ Message Sent!");
-    return true;
-}
+    // ✅ Scroll to Top
+    window.scrollTop = function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    };
 
-// ✅ Scroll Top Button + Animation
-window.addEventListener("scroll", () => {
-    let btn = document.getElementById("topBtn");
+    // ✅ Reveal Animation
+    function reveal() {
+        document.querySelectorAll(".card, .pcard").forEach(el => {
+            let top = el.getBoundingClientRect().top;
+            let screen = window.innerHeight;
 
-    if (btn) {
-        btn.style.display = window.scrollY > 200 ? "block" : "none";
+            if (top < screen - 100) {
+                el.style.opacity = "1";
+                el.style.transform = "translateY(0)";
+            }
+        });
     }
 
     reveal();
-});
 
-// ✅ Scroll to Top
-function scrollTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+    // ✅ Close menu after clicking link (mobile)
+    document.querySelectorAll("#navMenu a").forEach(link => {
+        link.addEventListener("click", () => {
+            if (window.innerWidth <= 768) {
+                navMenu.classList.remove("show");
+            }
+        });
     });
-}
 
-// ✅ Reveal Animation
-function reveal() {
-    let items = document.querySelectorAll(".card, .pcard");
-
-    items.forEach(el => {
-        let top = el.getBoundingClientRect().top;
-        let screen = window.innerHeight;
-
-        if (top < screen - 100) {
-            el.style.opacity = "1";
-            el.style.transform = "translateY(0)";
-        }
-    });
-}
-
-// ✅ Run on Load
-window.addEventListener("load", reveal);
-
-// ✅ Close menu after click (mobile)
-document.querySelectorAll("#navMenu a").forEach(link => {
-    link.addEventListener("click", () => {
-        if (window.innerWidth <= 768) {
-            document.getElementById("navMenu").classList.remove("show");
-        }
-    });
 });
