@@ -197,3 +197,27 @@ footer {
         display: none;
     }
 }
+/* INLINE HEADING STYLE */
+.faculty h2,
+.courses h2,
+.events h2,
+.contact h2 {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.faculty h2::before,
+.faculty h2::after,
+.courses h2::before,
+.courses h2::after,
+.events h2::before,
+.events h2::after,
+.contact h2::before,
+.contact h2::after {
+    content: "";
+    width: 40px;
+    height: 2px;
+    background: #0056b3;
+}
