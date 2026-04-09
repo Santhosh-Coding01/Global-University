@@ -1,16 +1,16 @@
-// ✅ Welcome Alert
+// ✅ Welcome
 function welcome() {
     alert("🎓 Application Started!");
 }
 
-// ✅ Menu Toggle (Mobile)
+// ✅ Menu Toggle (ONLY MOBILE)
 function toggleMenu() {
-    let nav = document.getElementById("nav");
-
-    nav.style.display = (nav.style.display === "flex") ? "none" : "flex";
+    if (window.innerWidth <= 768) {
+        document.getElementById("navMenu").classList.toggle("show");
+    }
 }
 
-// ✅ Dark Mode Toggle
+// ✅ Dark Mode
 function toggleTheme() {
     document.body.classList.toggle("dark");
 }
@@ -20,7 +20,7 @@ function validateForm() {
     let name = document.getElementById("name").value;
     let email = document.getElementById("email").value;
 
-    if (name === "" || email === "") {
+    if (!name || !email) {
         alert("❌ Please fill all fields");
         return false;
     }
@@ -29,7 +29,7 @@ function validateForm() {
     return true;
 }
 
-// ✅ Scroll Button + Animation Trigger
+// ✅ Scroll Top Button + Animation
 window.addEventListener("scroll", () => {
     let btn = document.getElementById("topBtn");
 
@@ -37,7 +37,7 @@ window.addEventListener("scroll", () => {
         btn.style.display = window.scrollY > 200 ? "block" : "none";
     }
 
-    revealOnScroll();
+    reveal();
 });
 
 // ✅ Scroll to Top
@@ -49,19 +49,28 @@ function scrollTop() {
 }
 
 // ✅ Reveal Animation
-function revealOnScroll() {
-    let elements = document.querySelectorAll(".card, .pcard");
+function reveal() {
+    let items = document.querySelectorAll(".card, .pcard");
 
-    elements.forEach(el => {
-        let position = el.getBoundingClientRect().top;
-        let screenHeight = window.innerHeight;
+    items.forEach(el => {
+        let top = el.getBoundingClientRect().top;
+        let screen = window.innerHeight;
 
-        if (position < screenHeight - 100) {
+        if (top < screen - 100) {
             el.style.opacity = "1";
             el.style.transform = "translateY(0)";
         }
     });
 }
 
-// ✅ Run on Page Load
-window.addEventListener("load", revealOnScroll);
+// ✅ Run on Load
+window.addEventListener("load", reveal);
+
+// ✅ Close menu after click (mobile)
+document.querySelectorAll("#navMenu a").forEach(link => {
+    link.addEventListener("click", () => {
+        if (window.innerWidth <= 768) {
+            document.getElementById("navMenu").classList.remove("show");
+        }
+    });
+});
