@@ -9,7 +9,7 @@
 body {
     font-family: Arial, sans-serif;
     background: #f5f5f5;
-    transition: 0.3s;
+    transition: background 0.3s, color 0.3s;
 }
 
 /* DARK MODE */
@@ -26,13 +26,23 @@ header {
     padding: 15px 20px;
     background: #002147;
     color: white;
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* HAMBURGER */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 /* NAV */
 nav {
     display: flex;
     align-items: center;
+    transition: all 0.3s ease;
 }
 
 nav a {
@@ -46,11 +56,19 @@ nav a:hover {
     color: white;
 }
 
-/* MENU BUTTON */
-.menu-toggle {
-    display: none;
-    font-size: 24px;
+/* BUTTON */
+button {
+    padding: 8px 15px;
+    background: #0056b3;
+    color: white;
+    border: none;
     cursor: pointer;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #003f80;
 }
 
 /* HERO */
@@ -60,20 +78,6 @@ nav a:hover {
     background: linear-gradient(rgba(0,0,50,0.6), rgba(0,0,50,0.6)),
     url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1') no-repeat center/cover;
     color: white;
-}
-
-/* BUTTON */
-button {
-    padding: 8px 15px;
-    background: #0056b3;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 20px;
-}
-
-button:hover {
-    background: #003f80;
 }
 
 /* SECTIONS */
@@ -105,47 +109,28 @@ button:hover {
     background: white;
 }
 
-/* IMAGE */
+/* IMAGES */
 .card img, .pcard img {
     width: 100%;
-    height: 150px;
-    object-fit: cover;
     border-radius: 10px;
+    margin-bottom: 10px;
 }
 
-/* HOVER */
+/* HOVER EFFECT */
 .card:hover, .pcard:hover {
     transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 /* CONTACT */
-.contact {
-    padding: 40px;
-    text-align: center;
-}
-
 .contact input,
 .contact textarea {
-    width: 60%;
-    padding: 10px;
-    margin: 10px auto;
     display: block;
-}
-
-/* LOGIN */
-.container {
-    height: calc(100vh - 70px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.login-box {
-    background: white;
-    padding: 30px;
-    width: 300px;
-    border-radius: 10px;
-    text-align: center;
+    margin: 10px auto;
+    padding: 10px;
+    width: 60%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 /* FOOTER */
@@ -162,6 +147,7 @@ footer {
     bottom: 20px;
     right: 20px;
     display: none;
+    border-radius: 50%;
 }
 
 /* MOBILE */
@@ -174,16 +160,21 @@ footer {
     nav {
         display: none;
         flex-direction: column;
+        background: #002147;
         position: absolute;
         top: 60px;
         right: 0;
-        background: #002147;
         width: 200px;
         padding: 10px;
     }
 
     nav.show {
         display: flex;
+    }
+
+    nav a {
+        margin: 10px 0;
+        display: block;
     }
 
     .card, .pcard {
@@ -200,5 +191,9 @@ footer {
 @media(min-width: 769px) {
     nav {
         display: flex !important;
+    }
+
+    .menu-toggle {
+        display: none;
     }
 }
