@@ -18,10 +18,6 @@ body {
     color: white;
 }
 
-.dark h2 {
-    color: white;
-}
-
 /* HEADER */
 header {
     display: flex;
@@ -30,16 +26,13 @@ header {
     padding: 15px 20px;
     background: #002147;
     color: white;
+    position: relative;
 }
 
 /* NAV */
 nav {
     display: flex;
     align-items: center;
-}
-
-nav.show {
-    display: flex !important;
 }
 
 nav a {
@@ -53,19 +46,11 @@ nav a:hover {
     color: white;
 }
 
-/* BUTTON */
-button {
-    padding: 8px 15px;
-    background: #0056b3;
-    color: white;
-    border: none;
+/* MENU BUTTON */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
     cursor: pointer;
-    border-radius: 20px;
-    transition: 0.3s;
-}
-
-button:hover {
-    background: #003f80;
 }
 
 /* HERO */
@@ -77,8 +62,18 @@ button:hover {
     color: white;
 }
 
-.hero p {
-    margin: 15px 0;
+/* BUTTON */
+button {
+    padding: 8px 15px;
+    background: #0056b3;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+button:hover {
+    background: #003f80;
 }
 
 /* SECTIONS */
@@ -91,23 +86,14 @@ button:hover {
     text-align: center;
 }
 
-.contact {
-    padding: 40px 20px;
-    text-align: center;
-}
-
 /* CARDS */
 .card, .pcard {
     width: 260px;
     min-height: 320px;
     padding: 15px;
     border-radius: 10px;
-    transition: 0.4s;
     opacity: 0;
     transform: translateY(50px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     transition: all 0.6s ease;
 }
 
@@ -122,19 +108,9 @@ button:hover {
 /* IMAGE */
 .card img, .pcard img {
     width: 100%;
+    height: 150px;
     object-fit: cover;
     border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-/* TEXT */
-.card h3, .pcard h3 {
-    margin: 10px 0 5px;
-}
-
-.card p, .pcard p {
-    margin: 5px 0;
-    line-height: 1.5;
 }
 
 /* HOVER */
@@ -142,18 +118,21 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* FORM */
-.contact input,
-.contact textarea {
-    display: block;
-    margin: 10px auto;
-    padding: 10px;
-    width: 60%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+/* CONTACT */
+.contact {
+    padding: 40px;
+    text-align: center;
 }
 
-/* LOGIN PAGE SUPPORT */
+.contact input,
+.contact textarea {
+    width: 60%;
+    padding: 10px;
+    margin: 10px auto;
+    display: block;
+}
+
+/* LOGIN */
 .container {
     height: calc(100vh - 70px);
     display: flex;
@@ -169,16 +148,6 @@ button:hover {
     text-align: center;
 }
 
-.login-box input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-}
-
-.login-box button {
-    width: 100%;
-}
-
 /* FOOTER */
 footer {
     text-align: center;
@@ -187,72 +156,6 @@ footer {
     color: white;
 }
 
-/* SCROLL BUTTON */
-#topBtn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: none;
-    border-radius: 50%;
-}
-
-/* INLINE HEADING STYLE */
-.faculty h2,
-.courses h2,
-.events h2,
-.contact h2 {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 30px;
-}
-
-.faculty h2::before,
-.faculty h2::after,
-.courses h2::before,
-.courses h2::after,
-.events h2::before,
-.events h2::after,
-.contact h2::before,
-.contact h2::after {
-    content: "";
-    width: 40px;
-    height: 2px;
-    background: #0056b3;
-}
-
-/* RESPONSIVE */
-@media(max-width: 768px) {
-
-    nav {
-        display: none;
-        flex-direction: column;
-        background: #002147;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 200px;
-        padding: 10px;
-    }
-
-    nav a {
-        margin: 10px 0;
-        display: block;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .card, .pcard {
-        width: 90%;
-    }
-
-    .contact input,
-    .contact textarea {
-        width: 90%;
-    }
-}
 /* SCROLL BUTTON */
 #topBtn {
     position: fixed;
