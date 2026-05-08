@@ -1,24 +1,40 @@
-/* RESET */
+/* ================= RESET ================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* BODY */
+/* ================= BODY ================= */
 body {
     font-family: Arial, sans-serif;
     background: #f5f5f5;
+    color: #222;
     transition: background 0.3s, color 0.3s;
 }
 
-/* DARK MODE */
+/* ================= DARK MODE ================= */
 .dark {
     background: #121212;
     color: white;
 }
 
-/* HEADER */
+.dark header,
+.dark footer {
+    background: #000;
+}
+
+.dark .card {
+    background: #1e1e1e;
+    color: white;
+}
+
+.dark .pcard {
+    background: #1e1e1e;
+    color: white;
+}
+
+/* ================= HEADER ================= */
 header {
     display: flex;
     justify-content: space-between;
@@ -31,24 +47,25 @@ header {
     z-index: 1000;
 }
 
-/* HAMBURGER */
+/* ================= HAMBURGER ================= */
 .menu-toggle {
     display: none;
-    font-size: 24px;
+    font-size: 26px;
     cursor: pointer;
 }
 
-/* NAV */
+/* ================= NAV ================= */
 nav {
     display: flex;
     align-items: center;
+    gap: 10px;
     transition: all 0.3s ease;
 }
 
 nav a {
     color: lightblue;
-    margin: 0 10px;
     text-decoration: none;
+    padding: 5px 8px;
     transition: 0.3s;
 }
 
@@ -56,14 +73,14 @@ nav a:hover {
     color: white;
 }
 
-/* BUTTON */
+/* ================= BUTTON ================= */
 button {
     padding: 8px 15px;
     background: #0056b3;
     color: white;
     border: none;
-    cursor: pointer;
     border-radius: 20px;
+    cursor: pointer;
     transition: 0.3s;
 }
 
@@ -71,16 +88,20 @@ button:hover {
     background: #003f80;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 .hero {
     text-align: center;
     padding: 120px 20px;
+    color: white;
     background: linear-gradient(rgba(0,0,50,0.6), rgba(0,0,50,0.6)),
     url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1') no-repeat center/cover;
-    color: white;
 }
 
-/* SECTIONS */
+.hero p {
+    margin: 15px 0;
+}
+
+/* ================= SECTIONS ================= */
 .courses, .faculty, .events {
     display: flex;
     flex-wrap: wrap;
@@ -90,39 +111,54 @@ button:hover {
     text-align: center;
 }
 
-/* CARDS */
+.contact {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* ================= CARDS ================= */
 .card, .pcard {
     width: 260px;
     min-height: 320px;
     padding: 15px;
     border-radius: 10px;
+    background: white;
+    transition: all 0.5s ease;
     opacity: 0;
     transform: translateY(50px);
-    transition: all 0.6s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card {
     background: rgb(201, 222, 252);
 }
 
-.pcard {
-    background: white;
-}
-
-/* IMAGES */
+/* ================= IMAGES ================= */
 .card img, .pcard img {
     width: 100%;
     border-radius: 10px;
     margin-bottom: 10px;
+    object-fit: cover;
 }
 
-/* HOVER EFFECT */
+/* ================= TEXT ================= */
+.card h3, .pcard h3 {
+    margin: 10px 0 5px;
+}
+
+.card p, .pcard p {
+    line-height: 1.5;
+}
+
+/* ================= HOVER ================= */
 .card:hover, .pcard:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-/* CONTACT */
+/* ================= FORM ================= */
 .contact input,
 .contact textarea {
     display: block;
@@ -133,7 +169,33 @@ button:hover {
     border-radius: 5px;
 }
 
-/* FOOTER */
+/* ================= LOGIN ================= */
+.container {
+    height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    background: white;
+    padding: 30px;
+    width: 300px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.login-box button {
+    width: 100%;
+}
+
+/* ================= FOOTER ================= */
 footer {
     text-align: center;
     padding: 20px;
@@ -141,7 +203,7 @@ footer {
     color: white;
 }
 
-/* SCROLL BUTTON */
+/* ================= SCROLL BUTTON ================= */
 #topBtn {
     position: fixed;
     bottom: 20px;
@@ -150,54 +212,7 @@ footer {
     border-radius: 50%;
 }
 
-/* MOBILE */
-@media(max-width: 768px) {
-
-    .menu-toggle {
-        display: block;
-    }
-
-    nav {
-        display: none;
-        flex-direction: column;
-        background: #002147;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 200px;
-        padding: 10px;
-    }
-
-    nav.show {
-        display: flex;
-    }
-
-    nav a {
-        margin: 10px 0;
-        display: block;
-    }
-
-    .card, .pcard {
-        width: 90%;
-    }
-
-    .contact input,
-    .contact textarea {
-        width: 90%;
-    }
-}
-
-/* DESKTOP FIX */
-@media(min-width: 769px) {
-    nav {
-        display: flex !important;
-    }
-
-    .menu-toggle {
-        display: none;
-    }
-}
-/* INLINE HEADING STYLE */
+/* ================= HEADINGS STYLE ================= */
 .faculty h2,
 .courses h2,
 .events h2,
@@ -220,4 +235,52 @@ footer {
     width: 40px;
     height: 2px;
     background: #0056b3;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width: 768px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #002147;
+        width: 200px;
+        padding: 10px;
+    }
+
+    nav.show {
+        display: flex;
+    }
+
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .card, .pcard {
+        width: 90%;
+    }
+
+    .contact input,
+    .contact textarea {
+        width: 90%;
+    }
+}
+
+/* ================= DESKTOP ================= */
+@media(min-width: 769px) {
+    nav {
+        display: flex !important;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
 }
