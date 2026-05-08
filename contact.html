@@ -33,14 +33,15 @@
 <header>
     <h1>🎓 Global University</h1>
 
-    <div class="menu-toggle" >☰</div>
-<nav id="navMenu">
-            <a href="index.html">Home</a>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <nav id="navMenu">
+        <a href="index.html">Home</a>
         <a href="login.html">Log-in</a>
         <a href="courses.html">Courses</a>
         <a href="faculty.html">Faculty</a>
         <a href="contact.html">Feedback</a>
-                <button onclick="toggleTheme()">🌙</button>
+        <button onclick="toggleTheme()">🌙</button>
 
     </nav>
 
@@ -67,6 +68,8 @@
         <button type="submit">Submit Feedback</button>
     </form>
 </section>
+
+<script src="script.js"></script>
 
 <script>
 // ⭐ Store rating
